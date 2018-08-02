@@ -13,3 +13,23 @@ Dot source the functions first:
 ```powershell
 . .\Split-File.ps1
 ```
+You can then split a file BigFile.dat with
+
+```powershell
+Split-File "BigFile.dat" 10000000
+```
+
+into parts of 10000000 byte size or to parts of the default size of 100 MB with
+
+```powershell
+Split-File "BigFile.dat"
+```
+
+The generated part files are named BigFile01.dat, BigFile02.dat, BigFile03.dat ...
+You can join the part files BigFile01.dat, BigFile02.dat, BigFile03.dat ... to the original file e.g. with
+
+```powershell
+dir BigFile??.dat | Join-File Rebuild.dat
+```
+
+Rebuild.dat is the same file as the original BigFile.dat.
